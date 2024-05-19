@@ -30,6 +30,16 @@ module {
     public type ApproveArgs = Types.ApproveArgs;
     public type ApproveResult = Types.ApproveResult;
     public type AllowanceArgs = Types.AllowanceArgs;
+    public type ApproveArgs_ICRC2 = {
+        fee : ?Types.Amount;
+        memo : ?Types.Memo;
+        from_subaccount : ?Types.Subaccount;
+        created_at_time : ?Types.Timestamp;
+        amount : Types.Amount;
+        expected_allowance : ?Nat; 
+        expires_at : ?Nat64; 
+        spender : { owner : Principal; subaccount : ?Types.Subaccount; };        
+    };
 
     public class ICRC2TokenAdapter(cid: Text): Types.TokenAdapter = this {
         let canister = actor(cid): actor { 
@@ -40,7 +50,7 @@ module {
             icrc1_decimals: query () -> async Nat8;
             icrc1_fee: query () -> async Nat;
             icrc1_metadata: query () -> async [(Text, Value)];
-            icrc2_approve : shared (ApproveArgs) -> async ApproveResult;
+            icrc2_approve : shared (ApproveArgs_ICRC2) -> async ApproveResult;
             icrc2_transfer_from : shared (TransferFromArgs) -> async TransferFromResult;
             icrc2_allowance : query (AllowanceArgs) -> async Amount;
         };
@@ -89,7 +99,19 @@ module {
             return await canister.icrc1_transfer(args);
         };
         public func approve(args: ApproveArgs): async ApproveResult { 
-            return await canister.icrc2_approve(args);
+            return await canister.icrc2_approve({
+                from_subaccount = args.from_subaccount;
+                spender = {
+                    owner = args.spender;
+                    subaccount = null;
+                };
+                amount = args.amount;
+                fee = args.fee;
+                memo = args.memo;
+                created_at_time = args.created_at_time;
+                expected_allowance = null;
+                expires_at = null;
+            });
         };
         public func transferFrom(args: TransferFromArgs): async TransferFromResult {
             return await canister.icrc2_transfer_from(args); 
