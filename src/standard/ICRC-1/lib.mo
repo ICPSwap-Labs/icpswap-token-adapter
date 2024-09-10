@@ -37,7 +37,8 @@ module {
         };
         public func valid(): async Bool { 
             try {
-                // let symbol: Text = await canister.icrc1_symbol();
+                // let symbol: Text = 
+                ignore await canister.icrc1_symbol();
                 return true;
             } catch(_) {
                 return false;

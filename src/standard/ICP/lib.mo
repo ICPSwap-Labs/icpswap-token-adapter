@@ -84,7 +84,7 @@ module {
         for (value in hashSum.vals()) {
         hashBuffer.add(value);
         };
-        Blob.fromArray(hashBuffer.toArray())
+        Blob.fromArray(Buffer.toArray(hashBuffer))
     };
 
     public class ICPTokenAdapter(): Types.TokenAdapter = this {

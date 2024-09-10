@@ -1,11 +1,9 @@
 import Text "mo:base/Text";
 import Nat8 "mo:base/Nat8";
 import Blob "mo:base/Blob";
-import Principal "mo:base/Principal";
 import Result "mo:base/Result";
 import Error "mo:base/Error";
 import Option "mo:base/Option";
-import PrincipalUtils "mo:commons/utils/PrincipalUtils";
 import Types "../../Types";
 import ExtCore "./ext/Core";
 import ExtCommon "./ext/Common";
@@ -43,9 +41,10 @@ module {
         };
         public func valid(): async Bool {
             try {
-                let extensions: [ExtCore.Extension] = await canister.extensions();
+                // let extensions: [ExtCore.Extension] = 
+                ignore await canister.extensions();
                 return true;
-            } catch(e) {
+            } catch(_) {
                 return false;
             };
         };
@@ -116,7 +115,7 @@ module {
                 subaccount = _subaccount;
             };
             switch (await canister.transfer(transferRequest)) {
-                case (#ok(amount)) { #Ok(0) };
+                case (#ok(_)) { #Ok(0) };
                 case (#err(code)) { throw Error.reject("Reuqest transfer error: " # debug_show(code)) };
             }
         };
@@ -128,7 +127,7 @@ module {
                 allowance = args.amount;
             };
             switch (await canister.approve(approveArgs)) {
-                case (#ok(amount)) { #Ok(0) };
+                case (#ok(_)) { #Ok(0) };
                 case (#err(code)) { throw Error.reject("Reuqest approve error: " # debug_show(code)) };
             }
         };
@@ -149,7 +148,7 @@ module {
                 subaccount = _subaccount;
             };
             switch (await canister.transferFrom(transferRequest)) {
-                case (#ok(amount)) { #Ok(0) };
+                case (#ok(_)) { #Ok(0) };
                 case (#err(code)) { throw Error.reject("Reuqest transferFrom error: " # debug_show(code)) };
             }
         };

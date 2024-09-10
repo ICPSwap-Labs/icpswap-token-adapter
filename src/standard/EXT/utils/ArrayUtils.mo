@@ -1,5 +1,4 @@
 import Buffer "mo:base/Buffer";
-import Array "mo:base/Array";
 
 module {
 
@@ -11,7 +10,7 @@ module {
         for (it in arr2.vals()) {
             buffer.add(it);
         };
-        return buffer.toArray();
+        return Buffer.toArray(buffer);
     };
     public func appendAll<T>(arr: [[T]]): [T] {
         var buffer: Buffer.Buffer<T> = Buffer.Buffer(0);
@@ -20,7 +19,7 @@ module {
                 buffer.add(it);
             };
         };
-        return buffer.toArray();
+        return Buffer.toArray(buffer);
     };
 
 }

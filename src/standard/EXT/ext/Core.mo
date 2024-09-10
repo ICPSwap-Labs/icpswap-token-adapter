@@ -105,7 +105,7 @@ module ExtCore = {
       for (byte in nat32tobytes(i).vals()) {
         byteBuffer.add(byte);
       };
-      return Principal.toText(Principal.fromBlob(Blob.fromArray(byteBuffer.toArray())));
+      return Principal.toText(Principal.fromBlob(Blob.fromArray(Buffer.toArray(byteBuffer))));
     };
     //Coz can't get principal directly, we can compare the bytes
     public func isPrincipal(tid : TokenIdentifier, p : Principal) : Bool {

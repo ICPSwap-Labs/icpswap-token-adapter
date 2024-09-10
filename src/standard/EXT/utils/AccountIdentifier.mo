@@ -4,13 +4,10 @@ hex library to generate corresponding hex address.
 Uses custom SHA224 and CRC32 motoko libraries
  */
 
-import Array "mo:base/Array";
 import Blob "mo:base/Blob";
 import Buffer "mo:base/Buffer";
 import CRC32 "./CRC32";
-import Debug "mo:base/Debug";
 import Hex "./Hex";
-import Nat "mo:base/Nat";
 import Nat8 "mo:base/Nat8";
 import Option "mo:base/Option";
 import Principal "mo:base/Principal";
@@ -48,11 +45,11 @@ module {
     var _sa : [Nat8] = Option.get<[Nat8]>(sa, SUBACCOUNT_ZERO);
     let buffer: Buffer.Buffer<Nat8> = Buffer.Buffer<Nat8>(0);
     _addAll<Nat8>(buffer, [ads, data, _sa]);
-    var hash : [Nat8] = SHA224.sha224(buffer.toArray());
+    var hash : [Nat8] = SHA224.sha224(Buffer.toArray(buffer));
     var crc : [Nat8] = CRC32.crc32(hash);
     buffer.clear();
     _addAll(buffer, [crc, hash]);
-    return Hex.encode(buffer.toArray());
+    return Hex.encode(Buffer.toArray(buffer));
   };
   // private func _addAll<T>(buffer: Buffer.Buffer<T>, arr: [T]) {
   //   for (item in arr.vals()) {

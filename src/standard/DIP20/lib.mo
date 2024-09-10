@@ -5,7 +5,6 @@ import Principal "mo:base/Principal";
 import Error "mo:base/Error";
 import PrincipalUtils "mo:commons/utils/PrincipalUtils";
 import Types "../../Types";
-import Debug "mo:base/Debug";
 import Option "mo:base/Option";
 
 module {
@@ -65,9 +64,9 @@ module {
         };
         public func valid(): async Bool { 
             try {
-                let metadata = await canister.getMetadata();
+                ignore await canister.getMetadata();
                 return true;
-            } catch(e) {
+            } catch(_) {
                 return false;
             };
         };

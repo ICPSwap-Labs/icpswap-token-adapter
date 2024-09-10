@@ -77,7 +77,7 @@ module {
         let c: Nat8 = 16 * a + b;
         buffer.add(c);
     };
-    return buffer.toArray();
+    return Buffer.toArray(buffer);
   };
 
 };
