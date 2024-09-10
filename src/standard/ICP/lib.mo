@@ -2,9 +2,7 @@ import Array "mo:base/Array";
 import Blob "mo:base/Blob";
 import Buffer "mo:base/Buffer";
 import Principal "mo:base/Principal";
-import Option "mo:base/Option";
 import Error "mo:base/Error";
-import Time "mo:base/Time";
 import Int "mo:base/Int";
 import Nat8 "mo:base/Nat8";
 import Nat32 "mo:base/Nat32";
@@ -161,7 +159,8 @@ module {
                 case (#Err(#InsufficientFunds {balance})) {
                     return #Err(#InsufficientFunds({ balance = Nat64.toNat(balance.e8s) }));
                 };
-                case (#Err(#TxTooOld(allowed_window_nanos))) {
+                // case (#Err(#TxTooOld(allowed_window_nanos))) {
+                case (#Err(#TxTooOld(_))) {
                     return #Err(#TooOld);
                 };
                 case (#Err(#TxCreatedInFuture)) {
@@ -172,10 +171,10 @@ module {
                 };
             };
         };
-        public func approve(args: ApproveArgs): async ApproveResult { 
+        public func approve(_: ApproveArgs): async ApproveResult { 
             throw Error.reject("Unsupport method 'approve'.");
         };
-        public func transferFrom(args: TransferFromArgs): async TransferFromResult {
+        public func transferFrom(_: TransferFromArgs): async TransferFromResult {
             throw Error.reject("Unsupport method 'transferFrom'."); 
         };
     }

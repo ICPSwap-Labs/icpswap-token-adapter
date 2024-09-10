@@ -1,10 +1,6 @@
-import Array "mo:base/Array";
 import Blob "mo:base/Blob";
-import Buffer "mo:base/Buffer";
 import Principal "mo:base/Principal";
 import Option "mo:base/Option";
-import Error "mo:base/Error";
-import Time "mo:base/Time";
 import Int "mo:base/Int";
 import Nat8 "mo:base/Nat8";
 import Nat64 "mo:base/Nat64";
@@ -60,9 +56,9 @@ module {
                     account = { owner = Principal.fromText(""); subaccount = null};
                     spender = Principal.fromText("");
                 };
-                let allowance: Amount = await canister.icrc2_allowance(allowanceArgs);
+                let _: Amount = await canister.icrc2_allowance(allowanceArgs);
                 return true;
-            } catch(e) {
+            } catch(_) {
                 return false;
             };
         };

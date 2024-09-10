@@ -24,25 +24,25 @@ module TokenFactory {
         //     };
         // }
         if (standard == "DIP20") {
-            Debug.print("==> dip20 adapter");
+            // Debug.print("==> dip20 adapter");
             return DIP20.DIP20TokenAdapter(address);
         } else if (standard == "DIP20-WICP") {
-            Debug.print("==> dip20 adapter");
+            // Debug.print("==> dip20 adapter");
             return DIP20.DIP20TokenAdapter(address);
         } else if (standard == "DIP20-XTC") {
-            Debug.print("==> dip20 adapter");
+            // Debug.print("==> dip20 adapter");
             return DIP20.DIP20TokenAdapter(address);
         } else if (standard == "EXT") {
-            Debug.print("==> ext adapter");
+            // Debug.print("==> ext adapter");
             return EXT.EXTTokenAdapter(address);
         } else if (standard == "ICRC1") {
-            Debug.print("==> icrc1 adapter");
+            // Debug.print("==> icrc1 adapter");
             return ICRC1.ICRC1TokenAdapter(address);
         } else if (standard == "ICRC2") {
-            Debug.print("==> icrc2 adapter");
+            // Debug.print("==> icrc2 adapter");
             return ICRC2.ICRC2TokenAdapter(address);
         } else if (standard == "ICRC3") {
-            Debug.print("==> icrc3 adapter");
+            // Debug.print("==> icrc3 adapter");
             return ICRC2.ICRC2TokenAdapter(address);
         } else if (standard == "ICP") {
             Debug.print("==> icp adapter");

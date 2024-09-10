@@ -4,7 +4,6 @@ import Int "mo:base/Int";
 import Blob "mo:base/Blob";
 import Nat64 "mo:base/Nat64";
 import Principal "mo:base/Principal";
-import Result "mo:base/Result";
 import Error "mo:base/Error";
 
 module {
@@ -90,14 +89,14 @@ module {
 
     public class TokenAdapter() {
         public func valid(): async Bool { throw Error.reject("Unsupport method 'valid'.") };
-        public func balanceOf(account : Account): async Amount { throw Error.reject("Unsupport method 'balanceOf'.") };
+        public func balanceOf(_ : Account): async Amount { throw Error.reject("Unsupport method 'balanceOf'.") };
         public func totalSupply(): async Amount { throw Error.reject("Unsupport method 'totalSupply'.") };
         public func symbol(): async Text { throw Error.reject("Unsupport method 'symbol'.") };
         public func decimals(): async Nat8 { throw Error.reject("Unsupport method 'decimals'.") };
         public func fee(): async Nat { throw Error.reject("Unsupport method 'fee'.") };
         public func metadata(): async [(Text, Value)] { throw Error.reject("Unsupport method 'metadata'.") };
-        public func transfer(args: TransferArgs): async TransferResult { throw Error.reject("Unsupport method 'transfer'.") };
-        public func approve(args: ApproveArgs): async ApproveResult { throw Error.reject("Unsupport method 'approve'.") };
-        public func transferFrom(args: TransferFromArgs): async TransferFromResult { throw Error.reject("Unsupport method 'transferFrom'.") };
+        public func transfer(_: TransferArgs): async TransferResult { throw Error.reject("Unsupport method 'transfer'.") };
+        public func approve(_: ApproveArgs): async ApproveResult { throw Error.reject("Unsupport method 'approve'.") };
+        public func transferFrom(_: TransferFromArgs): async TransferFromResult { throw Error.reject("Unsupport method 'transferFrom'.") };
     }
 }

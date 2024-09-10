@@ -8,11 +8,8 @@ import Text "mo:base/Text";
 import Nat "mo:base/Nat";
 import Nat8 "mo:base/Nat8";
 import Nat32 "mo:base/Nat32";
-import Debug "mo:base/Debug";
 //TODO pull in better
 import AID "../utils/AccountIdentifier";
-import Hex "../utils/Hex";
-import CRC32 "../utils/CRC32";
 import ArrayUtils "../utils/ArrayUtils";
 
 module ExtCore = {
@@ -113,8 +110,8 @@ module ExtCore = {
     //Coz can't get principal directly, we can compare the bytes
     public func isPrincipal(tid : TokenIdentifier, p : Principal) : Bool {
       let tobj = decode(tid);
-      var blob = Blob.fromArray(tobj.canister);
-      var blob2 = Principal.toBlob(p);
+      // var blob = Blob.fromArray(tobj.canister);
+      // var blob2 = Principal.toBlob(p);
       return Blob.equal(Blob.fromArray(tobj.canister), Principal.toBlob(p));
     };
     public func getIndex(tid : TokenIdentifier) : TokenIndex {
@@ -190,7 +187,7 @@ module ExtCore = {
     };
     public func toPrincipal(user : User) : ?Principal {
       switch(user) {
-        case (#address address) null;
+        case (#address _) null;
         case (#principal principal) ?principal;
       };
     };

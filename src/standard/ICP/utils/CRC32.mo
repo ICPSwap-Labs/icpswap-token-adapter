@@ -1,9 +1,6 @@
 /**
 CRC32.mo based on: https://github.com/enzoh/motoko-crc/blob/master/src/CRC8.mo
  */
-
-import Prim "mo:prim";
-import Nat "mo:base/Nat";
 import Nat8 "mo:base/Nat8";
 import Nat32 "mo:base/Nat32";
 import Blob "mo:base/Blob";

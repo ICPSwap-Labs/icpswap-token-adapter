@@ -1,13 +1,8 @@
-import Array         "mo:base/Array";
 import Blob          "mo:base/Blob";
-import Buffer        "mo:base/Buffer";
-import Principal     "mo:base/Principal";
 import Option        "mo:base/Option";
 import Error         "mo:base/Error";
-import Time          "mo:base/Time";
 import Int           "mo:base/Int";
 import Nat8          "mo:base/Nat8";
-import Nat64         "mo:base/Nat64";
 import Types "../../Types";
 import HashMap "mo:base/HashMap";
 import Text "mo:base/Text";
@@ -42,9 +37,9 @@ module {
         };
         public func valid(): async Bool { 
             try {
-                let symbol: Text = await canister.icrc1_symbol();
+                // let symbol: Text = await canister.icrc1_symbol();
                 return true;
-            } catch(e) {
+            } catch(_) {
                 return false;
             };
         };
@@ -80,10 +75,10 @@ module {
         public func transfer(args: TransferArgs): async TransferResult {
             return await canister.icrc1_transfer(args);
         };
-        public func approve(args: ApproveArgs): async ApproveResult { 
+        public func approve(_: ApproveArgs): async ApproveResult { 
             throw Error.reject("Unsupport method 'approve'.");
         };
-        public func transferFrom(args: TransferFromArgs): async TransferFromResult {
+        public func transferFrom(_: TransferFromArgs): async TransferFromResult {
             throw Error.reject("Unsupport method 'transferFrom'."); 
         };
     }

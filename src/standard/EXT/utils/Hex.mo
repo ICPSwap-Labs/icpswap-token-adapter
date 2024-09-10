@@ -69,7 +69,7 @@ module {
         map.put(uppercase, Nat8.fromNat(uppercase-65+10));
     };
     let p = Iter.toArray(Iter.map(Text.toIter(t), func (x: Char) : Nat { Nat32.toNat(Char.toNat32(x)) }));
-    var res : [var Nat8] = [var];      
+    // var res : [var Nat8] = [var];      
     let buffer: Buffer.Buffer<Nat8> = Buffer.Buffer<Nat8>(0); 
     for (i in Iter.range(0, 31)) {            
         let a = Option.get<Nat8>(map.get(p[i*2]), 0);
